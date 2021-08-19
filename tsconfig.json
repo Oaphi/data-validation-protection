@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "strictFunctionTypes": true,
+        "skipLibCheck": true,
+        "noEmit": true,
+        "lib": ["ESNext"],
+        "types": ["google-apps-script", "chai", "mocha"],
+        "target": "es2019",
+        "moduleResolution": "node"
+    },
+    "include": ["src", "test"]
+}

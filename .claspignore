@@ -1,0 +1,6 @@
+node_modules/**
+
+test/**
+
+*.json
+!appsscript.json

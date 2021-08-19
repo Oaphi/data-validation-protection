@@ -1,0 +1,31 @@
+{
+  "name": "data-validation-protection",
+  "description": "Apps Script utility library for easy manipulation of data validation protection",
+  "version": "0.1.0",
+  "keywords": [
+    "google apps script",
+    "data validation",
+    "protection",
+    "google sheets",
+    "spreadsheets"
+  ],
+  "author": {
+    "name": "Oleg Valter",
+    "email": "oleg.a.valter@gmail.com"
+  },
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "push": "clasp push --force"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.21",
+    "@types/google-apps-script": "^1.0.37",
+    "@types/mocha": "^9.0.0",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "clasp": "^1.0.0",
+    "mocha": "^9.0.3",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.3.5"
+  }
+}
