@@ -13,6 +13,8 @@ The library exposes the following methods (accessible via the `userSymbol` you i
 
 # Install
 
+> Latest library version: 3
+
 If developing locally, add the project info to manifest file's `dependencies.libraries` list:
 
 | Field             | Required | Value                                                                    |
@@ -28,7 +30,7 @@ Sample JSON object to add:
 {
     "libraryId": "1j32xAwEOn2sUWfUQsHjumwFO3rknOZxAGRRf-TQCZdvgPgwzJ2m4tptx",
     "userSymbol": "DataValidationProtectionApp",
-    "version": 1,
+    "version": 3,
     "developmentMode": false
 }
 ```
