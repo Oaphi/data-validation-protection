@@ -6,3 +6,5 @@ assets/**
 
 *.json
 !appsscript.json
+
+*.d.ts
