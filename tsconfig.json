@@ -7,7 +7,7 @@
         "skipLibCheck": true,
         "noEmit": true,
         "lib": ["ESNext"],
-        "types": ["google-apps-script", "chai", "mocha"],
+        "types": ["google-apps-script", "chai", "mocha", "node"],
         "target": "es2019",
         "moduleResolution": "node"
     },

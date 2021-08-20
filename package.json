@@ -15,16 +15,22 @@
   },
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "push": "clasp push --force"
+    "test": "mocha -r ts-node/register",
+    "push": "clasp push --force",
+    "preversion": "npm run push",
+    "postversion": "clasp deploy -i AKfycbxyzQ5W1x2vqRhvwSmkdsuvbEVuIbef8oCL7HmasYNHnR3tqDC4HnHnIpA51q8P8Zye -d \"Data Validation Protection\""
   },
   "devDependencies": {
     "@types/chai": "^4.2.21",
     "@types/google-apps-script": "^1.0.37",
     "@types/mocha": "^9.0.0",
+    "@types/node": "^16.6.2",
+    "@types/sinon": "^10.0.2",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
     "clasp": "^1.0.0",
     "mocha": "^9.0.3",
+    "sinon": "^11.1.2",
     "ts-node": "^10.2.1",
     "typescript": "^4.3.5"
   }
