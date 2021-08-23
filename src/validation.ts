@@ -1,6 +1,9 @@
 class DataValidationProtection {
     static prefix = "DVP";
 
+    /**
+     * @param {GoogleAppsScript.Spreadsheet.Sheet} [target] sheet to work with
+     */
     constructor(public target = SpreadsheetApp.getActiveSheet()) {}
 
     /**
@@ -44,6 +47,7 @@ class DataValidationProtection {
 
     /**
      * @summary adds data validation protection
+     * @param {number} [skipRows] rows to skip when setting protection
      * @returns {DataValidationProtection}
      */
     protect(skipRows = 1) {
