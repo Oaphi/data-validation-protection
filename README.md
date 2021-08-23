@@ -13,23 +13,24 @@ The library exposes the following methods (accessible via the `userSymbol` you i
 
 Upon obtaining an instance of `DataValidationProtection` class, the following instance methods become available:
 
-| Method                                    | Description                                         |
-| ----------------------------------------- | --------------------------------------------------- |
-| `getColumn([column=1])`                   | Gets data validation protections at a given column  |
-| `getRow([row=1])`                         | Gets data validation protections at a given row     |
-| `list()`                                  | Lists all data validation protections               |
-| `protect([skip=1])`                       | Adds data validation protection                     |
-| `unprotect()`                             | Removes data validation protection                  |
-| `addToColumn(<column>, [...emails])`      | Adds editors to a column of data validations        |
-| `addToRow(<row>, [...emails])`            | Adds editors to a row of data validations           |
-| `removeFromColumn(<column>, [...emails])` | Removes editors from a column of data validations   |
-| `removeFromRow(<row>, [...emails])`       | Removes editors from a row of data validations      |
-| `addEditors([...emails])`                 | Adds editors to the data validation protection      |
-| `removeEditors([...emails])`              | Removes editors from the data validation protection |
+| Method                                      | Description                                                                             |
+| ------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `getColumn([column=1])`                     | Gets data validation protections at a given column                                      |
+| `getRow([row=1])`                           | Gets data validation protections at a given row                                         |
+| `list()`                                    | Lists all data validation protections                                                   |
+| `protect([skip=1])`                         | Adds data validation protection                                                         |
+| `protectColumnsExcept(<index[]>, [skip=1])` | Adds data validation protection to columns except those specified (indexes are 0-based) |
+| `unprotect()`                               | Removes data validation protection                                                      |
+| `addToColumn(<column>, [...emails])`        | Adds editors to a column of data validations                                            |
+| `addToRow(<row>, [...emails])`              | Adds editors to a row of data validations                                               |
+| `removeFromColumn(<column>, [...emails])`   | Removes editors from a column of data validations                                       |
+| `removeFromRow(<row>, [...emails])`         | Removes editors from a row of data validations                                          |
+| `addEditors([...emails])`                   | Adds editors to the data validation protection                                          |
+| `removeEditors([...emails])`                | Removes editors from the data validation protection                                     |
 
 # Install
 
-> Latest library version: 3
+> Latest library version: 4
 
 If developing locally, add the project info to manifest file's `dependencies.libraries` list:
 

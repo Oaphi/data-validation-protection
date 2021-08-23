@@ -25,6 +25,14 @@ declare namespace GoogleAppsScript {
         unprotect(): DataValidationProtection;
 
         /**
+         * @summary adds data validation protection to columns except blacklisted
+         */
+        protectColumnsExcept(
+            blacklist: number[],
+            skipRows?: number
+        ): DataValidationProtection;
+
+        /**
          * @summary adds editors to a column of data validations
          */
         addToColumn(
