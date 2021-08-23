@@ -53,35 +53,23 @@ class DataValidationProtection {
     protect(skipRows = 1) {
         const { target } = this;
         const { prefix } = DataValidationProtection;
+        setProtection_(target, prefix, { skipRows });
+        return this;
+    }
 
-        const drange = target.getDataRange();
-
-        const [headers] = drange.getValues();
-        const validations = drange.getDataValidations();
-
-        const validationColumns = headers.map((_, ci) =>
-            validations.map((r) => r[ci]).some(Boolean)
-        );
-
-        const numRows = drange.getNumRows();
-
-        headers.forEach((header, ci) => {
-            if (!validationColumns[ci]) return;
-
-            const colRng = target.getRange(
-                skipRows + 1,
-                ci + 1,
-                numRows - 1,
-                1
-            );
-
-            const prot = colRng.protect();
-            prot.setDescription(`${prefix} | ${header}`);
-
-            const protection = new Protection(prot);
-            protection.removeEditors();
+    /**
+     * @summary adds data validation protection to columns except blacklisted
+     * @param {number[]} blacklist array of 0-based column indices
+     * @param {number} [skipRows] rows to skip when setting protection
+     *  @returns {DataValidationProtection}
+     */
+    protectColumnsExcept(blacklist: number[], skipRows = 1) {
+        const { target } = this;
+        const { prefix } = DataValidationProtection;
+        setProtection_(target, prefix, {
+            skipRows,
+            columnBlacklist: blacklist,
         });
-
         return this;
     }
 
