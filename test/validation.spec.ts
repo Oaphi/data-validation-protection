@@ -36,4 +36,6 @@ describe("DataValidationProtection", () => {
     it.skip("should remove editors from row correctly", () => {});
 
     it.skip("should remove all editors from protections correctly", () => {});
+
+    it.skip("should protect columns except blacklisted indices", () => {});
 });
