@@ -126,8 +126,8 @@ describe("Protection", () => {
 
     describe("isProtectedCell", () => {
         it("should correctly check if a given protection matches cell coordinates", () => {
-            const prot = Protection.isProtectedCell(protection, 1, 1);
-            const unprot = Protection.isProtectedCell(protection, 2, 2);
+            const prot = protection.isProtectedCell(1, 1);
+            const unprot = protection.isProtectedCell(2, 2);
 
             expect(prot).to.be.true;
             expect(unprot).to.be.false;

@@ -76,11 +76,7 @@ declare namespace GoogleAppsScript {
         /**
          * @summary checks if a given protection applies to coordinates
          */
-        static isProtectedCell(
-            protection: GoogleAppsScript.Spreadsheet.Protection | Protection,
-            row: number,
-            col: number
-        ): boolean;
+        isProtectedCell(row: number, col: number): boolean;
 
         /**
          * @summary adds an editor from the protection

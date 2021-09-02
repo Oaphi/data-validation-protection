@@ -10,6 +10,7 @@ The library exposes the following methods (accessible via the `userSymbol` you i
 | ---------------------- | ------------------------------------------------------------------------------ |
 | `getInstance(<sheet>)` | Instantiates the utility class given a Google Sheets sheet                     |
 | `setPrefix(<prefix>)`  | Sets the prefix to prepend when naming new data validations (`DVP` by default) |
+| `wrap(<protection>)`   | Wraps a built-in protection into internal `Protection` class instance          |
 
 Upon obtaining an instance of `DataValidationProtection` class, the following instance methods become available:
 
@@ -27,6 +28,16 @@ Upon obtaining an instance of `DataValidationProtection` class, the following in
 | `removeFromRow(<row>, [...emails])`         | Removes editors from a row of data validations                                          |
 | `addEditors([...emails])`                   | Adds editors to the data validation protection                                          |
 | `removeEditors([...emails])`                | Removes editors from the data validation protection                                     |
+
+An internal `Protection` class instance, obtained via the `wrap` method, exposes the following instance methods:
+
+| Method                             | Description                                                                  |
+| ---------------------------------- | ---------------------------------------------------------------------------- |
+| `isProtectedCell(<row>, <column>)` | Checks if a given protection applies to coordinates                          |
+| `getRange()`                       | Returns an instance of `Range` class the protection is set on (proxy method) |
+| `addEditor(<email>)`               | Adds an editor to protection (proxy method)                                  |
+| `removeEditor(<email>)`            | Removes an editor from protection (proxy method)                             |
+| `removeEditors()`                  | Removes all editors from protection                                          |
 
 # Install
 

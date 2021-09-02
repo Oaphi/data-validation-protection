@@ -3,16 +3,12 @@ class Protection {
 
     /**
      * @summary checks if a given protection applies to coordinates
-     * @param {GoogleAppsScript.Spreadsheet.Protection} protection
      * @param {number} row 1-based row position
      * @param {number} col 1-based column position
      * @returns {boolean}
      */
-    static isProtectedCell(
-        protection: GoogleAppsScript.Spreadsheet.Protection | Protection,
-        row: number,
-        col: number
-    ): boolean {
+    isProtectedCell(row: number, col: number): boolean {
+        const { protection } = this;
         const rng = protection.getRange();
         return rng.getColumn() === col && rng.getRow() === row;
     }
