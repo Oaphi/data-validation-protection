@@ -72,11 +72,49 @@ declare namespace GoogleAppsScript {
         removeEditors(...emails: string[]): void;
     }
 
+    class Protection {
+        /**
+         * @summary checks if a given protection applies to coordinates
+         */
+        static isProtectedCell(
+            protection: GoogleAppsScript.Spreadsheet.Protection | Protection,
+            row: number,
+            col: number
+        ): boolean;
+
+        /**
+         * @summary adds an editor from the protection
+         */
+        addEditor(email: string): Protection;
+
+        /**
+         * @summary removes an editor from the protection
+         */
+        removeEditor(email: string): Protection;
+
+        /**
+         * @summary removes all editors from the protection
+         */
+        removeEditors(): Protection;
+    }
+
     interface DataValidationProtectionApp {
+        /**
+         * @summary instantiates a DataValidationProtection class
+         */
         getInstance(
             sheet: GoogleAppsScript.Spreadsheet.Sheet
         ): DataValidationProtection;
+
+        /**
+         * @summary sets prefix to add to protection name
+         */
         setPrefix(prefix: string): void;
+
+        /**
+         * @summary wraps a protection into Protection class instance
+         */
+        wrap(protection: GoogleAppsScript.Spreadsheet.Protection): Protection;
     }
 }
 
