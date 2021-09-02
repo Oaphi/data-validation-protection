@@ -41,7 +41,7 @@ An internal `Protection` class instance, obtained via the `wrap` method, exposes
 
 # Install
 
-> Latest library version: 4
+> Latest library version: 6
 
 If developing locally, add the project info to manifest file's `dependencies.libraries` list:
 
@@ -58,7 +58,7 @@ Sample JSON object to add:
 {
     "libraryId": "1j32xAwEOn2sUWfUQsHjumwFO3rknOZxAGRRf-TQCZdvgPgwzJ2m4tptx",
     "userSymbol": "DataValidationProtectionApp",
-    "version": "3",
+    "version": "6",
     "developmentMode": false
 }
 ```
