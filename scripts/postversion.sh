@@ -34,8 +34,13 @@ declare lib_version=$(clasp versions | tail -n 1 | cut -d " " -f 1)
 declare readme_path="README.md"
 declare latest_tag=$(git tag --list | tail -n 1)
 
+# "version": "3",
+
 # replace old version with the new one
-sed -i -e "s/\(.\?Latest library version:\) [0-9]\+/\1 $lib_version/" "$readme_path"
+sed -i \
+    -e "s/\(.\?Latest library version:\) [0-9]\+/\1 $lib_version/" \
+    -e "s/\(.*\"version\"[ ]*:\) \"[0-9]\"/\1 \"$lib_version\"/" \
+    "$readme_path"
 
 # forward the latest tag & show latest log
 git add "$readme_path"
