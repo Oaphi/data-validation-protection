@@ -23,8 +23,22 @@ declare namespace globalThis {
 }
 
 describe("Protection", () => {
-    const bareProtection = {
+    const mockRange = {
+        getRow() {
+            return 1;
+        },
+        getColumn() {
+            return 1;
+        },
+    };
+
+    const mockProtection = {
         _users: [],
+
+        getRange() {
+            return mockRange;
+        },
+
         addEditor(
             this: { _users: Partial<GoogleAppsScript.Base.User>[] },
             tgt: string | GoogleAppsScript.Base.User
@@ -71,40 +85,52 @@ describe("Protection", () => {
         },
     } as unknown as GoogleAppsScript.Spreadsheet.Protection;
 
-    const protection = new globalThis.Protection(bareProtection);
+    const protection = new globalThis.Protection(mockProtection);
 
     const sandbox = sinon.createSandbox();
 
-    beforeEach(() => sandbox.spy(bareProtection));
+    beforeEach(() => sandbox.spy(mockProtection));
     afterEach(() => {
         sandbox.restore();
-        bareProtection.removeEditors(bareProtection.getEditors());
+        mockProtection.removeEditors(mockProtection.getEditors());
     });
 
-    it("should correctly attempt to add an editor", () => {
-        const editor = "jane@doe.com";
-        protection.addEditor(editor);
+    describe("Editors", () => {
+        it("should correctly attempt to add an editor", () => {
+            const editor = "jane@doe.com";
+            protection.addEditor(editor);
 
-        const emails = bareProtection.getEditors().map((u) => u.getEmail());
+            const emails = mockProtection.getEditors().map((u) => u.getEmail());
 
-        expect(emails).to.have.length(1);
-        expect(emails).to.contain(editor);
+            expect(emails).to.have.length(1);
+            expect(emails).to.contain(editor);
+        });
+
+        it("should correctly attempt to remove an editor", () => {
+            const editor = "john@doe.org";
+            protection.addEditor(editor);
+            protection.removeEditor(editor);
+
+            expect(mockProtection.getEditors()).to.be.empty;
+        });
+
+        it("should correctly attempt to remove all editors", () => {
+            const editors = ["jeanne@darc.fr", "jacques@darc.fr"];
+            editors.forEach((editor) => protection.addEditor(editor));
+
+            protection.removeEditors();
+
+            expect(mockProtection.getEditors()).to.be.empty;
+        });
     });
 
-    it("should correctly attempt to remove an editor", () => {
-        const editor = "john@doe.org";
-        protection.addEditor(editor);
-        protection.removeEditor(editor);
+    describe("isProtectedCell", () => {
+        it("should correctly check if a given protection matches cell coordinates", () => {
+            const prot = Protection.isProtectedCell(protection, 1, 1);
+            const unprot = Protection.isProtectedCell(protection, 2, 2);
 
-        expect(bareProtection.getEditors()).to.be.empty;
-    });
-
-    it("should correctly attempt to remove all editors", () => {
-        const editors = ["jeanne@darc.fr", "jacques@darc.fr"];
-        editors.forEach((editor) => protection.addEditor(editor));
-
-        protection.removeEditors();
-
-        expect(bareProtection.getEditors()).to.be.empty;
+            expect(prot).to.be.true;
+            expect(unprot).to.be.false;
+        });
     });
 });
