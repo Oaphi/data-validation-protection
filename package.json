@@ -18,7 +18,7 @@
     "test": "mocha -r ts-node/register",
     "push": "clasp push --force",
     "preversion": "npm run push",
-    "postversion": "clasp deploy -i AKfycbxyzQ5W1x2vqRhvwSmkdsuvbEVuIbef8oCL7HmasYNHnR3tqDC4HnHnIpA51q8P8Zye -d \"Data Validation Protection\""
+    "postversion": "bash ./scripts/postversion.sh"
   },
   "devDependencies": {
     "@types/chai": "^4.2.21",
