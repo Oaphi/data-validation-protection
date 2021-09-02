@@ -9,9 +9,9 @@ class DataValidationProtection {
     /**
      * @summary gets data validation protections at a certain column
      * @param {number} [column] column position
-     * @returns {GoogleAppsScript.Spreadsheet.DataValidation[]}
+     * @returns {GoogleAppsScript.Spreadsheet.Protection[]}
      */
-    getColumn(column = 1) {
+    getColumn(column = 1): GoogleAppsScript.Spreadsheet.Protection[] {
         const protections = this.list();
         return protections.filter(
             (prot) => prot.getRange().getColumn() === column
@@ -21,18 +21,18 @@ class DataValidationProtection {
     /**
      * @summary gets data validation protections at a certain row
      * @param {number} [row] row position
-     * @returns {GoogleAppsScript.Spreadsheet.DataValidation[]}
+     * @returns {GoogleAppsScript.Spreadsheet.Protection[]}
      */
-    getRow(row = 1) {
+    getRow(row = 1): GoogleAppsScript.Spreadsheet.Protection[] {
         const protections = this.list();
         return protections.filter((prot) => prot.getRange().getRow() === row);
     }
 
     /**
      * @summary lists data validation protections
-     * @returns {GoogleAppsScript.Spreadsheet.DataValidation[]}
+     * @returns {GoogleAppsScript.Spreadsheet.Protection[]}
      */
-    list() {
+    list(): GoogleAppsScript.Spreadsheet.Protection[] {
         const { target } = this;
         const { prefix } = DataValidationProtection;
 
@@ -50,7 +50,7 @@ class DataValidationProtection {
      * @param {number} [skipRows] rows to skip when setting protection
      * @returns {DataValidationProtection}
      */
-    protect(skipRows = 1) {
+    protect(skipRows = 1): DataValidationProtection {
         const { target } = this;
         const { prefix } = DataValidationProtection;
         setProtection_(target, prefix, { skipRows });
@@ -63,7 +63,10 @@ class DataValidationProtection {
      * @param {number} [skipRows] rows to skip when setting protection
      *  @returns {DataValidationProtection}
      */
-    protectColumnsExcept(blacklist: number[], skipRows = 1) {
+    protectColumnsExcept(
+        blacklist: number[],
+        skipRows = 1
+    ): DataValidationProtection {
         const { target } = this;
         const { prefix } = DataValidationProtection;
         setProtection_(target, prefix, {
@@ -77,7 +80,7 @@ class DataValidationProtection {
      * @summary removes data validation protection
      * @returns {DataValidationProtection}
      */
-    unprotect() {
+    unprotect(): DataValidationProtection {
         const protections = this.list();
         protections.forEach((prot) => prot.remove());
         return this;
@@ -89,7 +92,7 @@ class DataValidationProtection {
      * @param {...string} emails list of editor emails to add
      * @returns {DataValidationProtection}
      */
-    addToColumn(column: number, ...emails: string[]) {
+    addToColumn(column: number, ...emails: string[]): DataValidationProtection {
         const protections = this.getColumn(column);
         protections.forEach((prot) => prot.addEditors(emails));
         return this;
@@ -101,7 +104,7 @@ class DataValidationProtection {
      * @param {...string} emails list of editor emails to add
      * @returns {DataValidationProtection}
      */
-    addToRow(row: number, ...emails: string[]) {
+    addToRow(row: number, ...emails: string[]): DataValidationProtection {
         const protections = this.getRow(row);
         protections.forEach((prot) => prot.addEditors(emails));
         return this;
@@ -113,7 +116,10 @@ class DataValidationProtection {
      * @param {...string} emails list of editor emails to remove
      * @returns {DataValidationProtection}
      */
-    removeFromColumn(column: number, ...emails: string[]) {
+    removeFromColumn(
+        column: number,
+        ...emails: string[]
+    ): DataValidationProtection {
         const protections = this.getColumn(column);
         protections.forEach((prot) => prot.removeEditors(emails));
         return this;
@@ -125,7 +131,7 @@ class DataValidationProtection {
      * @param {...string} emails list of editor emails to remove
      * @returns {DataValidationProtection}
      */
-    removeFromRow(row: number, ...emails: string[]) {
+    removeFromRow(row: number, ...emails: string[]): DataValidationProtection {
         const protections = this.getRow(row);
         protections.forEach((prot) => prot.removeEditors(emails));
         return this;
@@ -136,7 +142,7 @@ class DataValidationProtection {
      * @param {...string} emails list of editor emails to add
      * @returns {DataValidationProtection}
      */
-    addEditors(...emails: string[]) {
+    addEditors(...emails: string[]): DataValidationProtection {
         const protections = this.list();
         protections.forEach((prot) => prot.addEditors(emails));
         return this;
@@ -147,8 +153,9 @@ class DataValidationProtection {
      * @param {...string} emails list of editor emails to remove
      * @returns {DataValidationProtection}
      */
-    removeEditors(...emails: string[]) {
+    removeEditors(...emails: string[]): DataValidationProtection {
         const protections = this.list();
         protections.forEach((prot) => prot.removeEditors(emails));
+        return this;
     }
 }

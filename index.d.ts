@@ -1,18 +1,16 @@
 declare namespace GoogleAppsScript {
     class DataValidationProtection {
-        getColumn(
-            column?: number
-        ): GoogleAppsScript.Spreadsheet.DataValidation[];
+        getColumn(column?: number): GoogleAppsScript.Spreadsheet.Protection[];
 
         /**
          * @summary gets data validation protections at a certain row
          */
-        getRow(row?: number): GoogleAppsScript.Spreadsheet.DataValidation[];
+        getRow(row?: number): GoogleAppsScript.Spreadsheet.Protection[];
 
         /**
          * @summary lists data validation protections
          */
-        list(): GoogleAppsScript.Spreadsheet.DataValidation[];
+        list(): GoogleAppsScript.Spreadsheet.Protection[];
 
         /**
          * @summary adds data validation protection
@@ -69,7 +67,7 @@ declare namespace GoogleAppsScript {
         /**
          * @summary removes editors from the data validation protection
          */
-        removeEditors(...emails: string[]): void;
+        removeEditors(...emails: string[]): DataValidationProtection;
     }
 
     class Protection {
